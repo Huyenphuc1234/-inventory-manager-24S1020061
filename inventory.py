@@ -7,6 +7,14 @@ def add_product(name, price, quantity):
     }
     products.append(product)
     print(f"Đã thêm sản phẩm: {name}")
+def view_inventory():
+    print("\n=== DANH SÁCH SẢN PHẨM ===")
+    if not products:
+        print("Kho đang trống!")
+        return
+    
+    for item in products:
+        print(f"- {item['name']} | Giá: {item['price']} | Tồn kho: {item['qty']}")
 
 def main():
     while True:
@@ -25,6 +33,8 @@ def main():
             p = int(input("Giá bán: "))
             q = int(input("Số lượng: "))
             add_product(n, p, q)
+        elif choice == "2":
+           view_inventory()
 
     else:
         print("Chức năng này sẽ được cập nhật sau.")
