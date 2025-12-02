@@ -7,6 +7,7 @@ def add_product(name, price, quantity):
     }
     products.append(product)
     print(f"Đã thêm sản phẩm: {name}")
+    
 def view_inventory():
     print("\n=== DANH SÁCH SẢN PHẨM ===")
     if not products:
@@ -15,6 +16,18 @@ def view_inventory():
     
     for item in products:
         print(f"- {item['name']} | Giá: {item['price']} | Tồn kho: {item['qty']}")
+
+def check_low_stock():
+    print("\n=== CẢNH BÁO SẮP HẾT HÀNG ===")
+    found = False
+
+    for item in products:
+        if item["qty"] < 5:
+            print(f"- {item['name']} chỉ còn {item['qty']}!")
+            found = True
+    
+    if not found:
+        print("Tất cả sản phẩm đều đủ số lượng.")
 
 def main():
     while True:
@@ -35,6 +48,8 @@ def main():
             add_product(n, p, q)
         elif choice == "2":
            view_inventory()
+        elif choice == "3":
+           check_low_stock()
 
     else:
         print("Chức năng này sẽ được cập nhật sau.")
